@@ -1,0 +1,13 @@
+#wunderground-logo {
+  width: auto;
+  max-height: 20px;
+}
+
+#weather-icon {
+  width: auto;
+  height: 90px;
+}
+
+#credits {
+  padding: 50px 0 0 0;
+}
