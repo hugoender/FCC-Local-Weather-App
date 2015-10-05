@@ -24,20 +24,26 @@
   <h1 class='text-center'>WEATHER</h1>
 
   <div>
+    
+    <!--City-->
     <h3 id='location-name' class='text-center'></h3>
-    <div class='text-center'>
-      <div class="btn-group" data-toggle="buttons">
-        <label class="btn btn-default active">
-          <input type="radio" name="options" id="fahrenheit" autocomplete="off" value="fahr" checked> &deg;F
-        </label>
-        <label class="btn btn-default">
-          <input type="radio" name="options" id="celsius" autocomplete="off" value="cels"> &deg;C
-        </label>
-      </div>
+    
+    <!--Toggle Switch-->
+    <!--Need to figure out how to get text next to it-->
+    <div id='toggle-switch' class='center-block'>
+      <input id='cmn-toggle-4' class='center-block cmn-toggle cmn-toggle-round-flat' type='checkbox'>
+      <label for='cmn-toggle-4'></label>
     </div>
+    
+    <!--Temperature-->
     <h3 id='location-temp' class='text-center'></h3>
+    
+    <!--Weather Icon-->
     <h3 id='location-icon' class='text-center'><i class='fa fa-circle-o-notch fa-spin'></i></h3>
+    
+    <!--Weather Text-->
     <h4 id='location-weather' class='text-center'></h4>
+    
   </div>
 
   <div id='credits' class='text-center'>

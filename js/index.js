@@ -44,6 +44,7 @@ function showPosition(position) {
       $('i').remove();
       $('#location-icon').prepend("<img id='weather-icon' src='http://icons.wxug.com/i/c/i/partlycloudy.gif' />")
       $('#location-weather').text(weather);
+      $('#toggle-switch').show();
     }
   });
 }
