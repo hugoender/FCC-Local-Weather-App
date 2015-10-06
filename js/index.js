@@ -17,7 +17,7 @@ function getLocation() {
   navigator.geolocation.getCurrentPosition(showPosition, showError);
 }
 
-// Get lat and long coords from browser
+// Get lat and long coords from browser and then call weather API
 function showPosition(position) {
   var latCoord= position.coords.latitude;
   //console.log(latCoord);
@@ -44,11 +44,13 @@ function showPosition(position) {
       $('i').remove();
       $('#location-icon').prepend("<img id='weather-icon' src='http://icons.wxug.com/i/c/i/partlycloudy.gif' />")
       $('#location-weather').text(weather);
-      $('#toggle-switch').show();
+      $('#toggle-switch').css('display','inline-block');
     }
   });
 }
 
+// If getCurrentPosition method in getLocation() function throws error,
+// handle it
 function showError(error) {
   switch (error.code) {
   case error.PERMISSION_DENIED:
@@ -66,10 +68,9 @@ function showError(error) {
   }
 }
 
-$("label").change(function() {
-  var unit = $("input[name='options']:checked").val();
+$("#cmn-toggle-4").click(function() {
   console.log('clicked');
-  if (unit === "cels"){
+  if (this.checked){
     $('#location-temp').html(temp_c+' &deg; C');
   }
   else {
