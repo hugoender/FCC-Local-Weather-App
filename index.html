@@ -20,39 +20,40 @@
 </head>
 
 <body>
+  
+  <div class='black-opacity'>
 
-  <h1 class='text-center'>WEATHER</h1>
+    <h1 class='text-center'>WEATHER</h1>
 
-  <div>
-    
     <!--City-->
     <h3 id='location-name' class='text-center'></h3>
-    
+
     <!--Toggle Switch-->
-    <!--Need to figure out how to get text next to it-->
-    <div class='container'>
-      <div id='toggle-switch'>
-        <span class='span-class'>text</span>
-        <input id='cmn-toggle-4' class='cmn-toggle cmn-toggle-round-flat' type='checkbox'>
-        <label class='label-class' for='cmn-toggle-4'></label>
-        <span class='span-class'>text</span>
+    <div class='container-flex'>
+      <div class='toggle-text-left'><h3>&deg;F</h3></div>
+      <div class='toggle-switch'>
+        <input id='toggle' class='cmn-toggle cmn-toggle-round-flat' type='checkbox'>
+        <label id='toggle-switch-label' for='toggle'></label>
       </div>
+      <div class='toggle-text-right'><h3>&deg;C</h3></div>
     </div>
-    
+
     <!--Temperature-->
     <h3 id='location-temp' class='text-center'></h3>
-    
+
     <!--Weather Icon-->
     <h3 id='location-icon' class='text-center'><i class='fa fa-circle-o-notch fa-spin'></i></h3>
-    
+
     <!--Weather Text-->
     <h4 id='location-weather' class='text-center'></h4>
-    
-  </div>
 
-  <div id='credits' class='text-center'>
-    <a href='http://www.wunderground.com/'><img alt='Weather Underground Logo' id='wunderground-logo' src='http://icons.wxug.com/logos/JPG/wundergroundLogo_4c_horz.jpg' /></a>
+
+    <div class='credits text-center'>
+      <a href='http://www.wunderground.com/'><img alt='Weather Underground Logo' id='wunderground-logo' src='http://icons.wxug.com/logos/JPG/wundergroundLogo_4c_horz.jpg' /></a>
+    </div>
+  
   </div>
+  
 </body>
 
 </html>

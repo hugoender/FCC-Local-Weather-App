@@ -1,7 +1,3 @@
-//$(document).ready(function() {
-//  
-//});
-
 jQuery(document).ready(function ($) {
   getLocation();
 });
@@ -19,10 +15,9 @@ function getLocation() {
 
 // Get lat and long coords from browser and then call weather API
 function showPosition(position) {
-  var latCoord= position.coords.latitude;
-  //console.log(latCoord);
+  var latCoord = position.coords.latitude;
   var longCoord = position.coords.longitude;
-  //console.log(longCoord);
+
 
   // API call to Weather Underground
   $.ajax({
@@ -33,24 +28,52 @@ function showPosition(position) {
       //console.log(location);
       temp_f = parsed_json['current_observation']['temp_f'];
       temp_c = parsed_json['current_observation']['temp_c'];
-      //console.log(temp_f);
+
       var weather = parsed_json['current_observation']['weather'];
       var icon = parsed_json['current_observation']['icon'];
-      
+
       $('#location-name').text(location);
-      // Need to place conditional here for temp_c
-      // $('#location-temp').text(temp_c);
-      $('#location-temp').html(temp_f+' &deg; F');
+      $('#location-temp').html(temp_f + ' &deg;F');
       $('i').remove();
-      $('#location-icon').prepend("<img id='weather-icon' src='http://icons.wxug.com/i/c/i/partlycloudy.gif' />")
+      $('#location-icon').prepend("<img id='weather-icon' src='http://icons.wxug.com/i/c/i/" + icon + ".gif' />")
       $('#location-weather').text(weather);
-      $('#toggle-switch').css('display','inline-block');
+      $('.toggle-text-left').css('display', 'flex');
+      $('.toggle-text-right').css('display', 'flex');
+      $('.toggle-switch').css('display', 'flex');
+
+      // Different icon name possibilities
+      var snowArray = ["chanceflurries", "chancesnow", "chancesleet", "flurries", "sleet", "snow"];
+      var rainArray = ["rain", "chancerain", "tstorms", "chancestorms"];
+      var sunnyArray = ["clear", "hazy", "mostlysunny", "sunny", "partlycloudy"];
+      var cloudyArray = ["cloudy", "fog", "mostlycloudy"];
+
+      // Find which array the icon belongs to and display that background image
+      if ($.inArray(icon, snowArray) > -1) {
+        $('body').css('background-image', 'url("http://cache.desktopnexus.com/thumbseg/205/205327-bigthumbnail.jpg")');
+      } 
+      else if ($.inArray(icon, rainArray) > -1) {
+        $('body').css('background-image', 'url("http://cache.desktopnexus.com/thumbseg/92/92240-bigthumbnail.jpg")');
+      } 
+      else if ($.inArray(icon, sunnyArray) > -1) {
+        $('body').css('background-image', 'url("http://images.fineartamerica.com/images-medium-large/sunny-spring-landscape-michal-bednarek.jpg")');
+      } 
+      else if ($.inArray(icon, cloudyArray) > -1) {
+        $('body').css('background-image', 'url("https://c1.staticflickr.com/7/6023/5975465375_9c089b6085_b.jpg")');
+      }      
+
+      // Change from fahrenheit to celsius and vice versa
+      $("#toggle").click(function () {
+        if (this.checked) {
+          $('#location-temp').html(temp_c + ' &deg;C');
+        } else {
+          $('#location-temp').html(temp_f + ' &deg;F');
+        }
+      });
     }
   });
 }
 
-// If getCurrentPosition method in getLocation() function throws error,
-// handle it
+// If getCurrentPosition method in getLocation() function throws error, handle it
 function showError(error) {
   switch (error.code) {
   case error.PERMISSION_DENIED:
@@ -67,13 +90,3 @@ function showError(error) {
     break;
   }
 }
-
-$("#cmn-toggle-4").click(function() {
-  console.log('clicked');
-  if (this.checked){
-    $('#location-temp').html(temp_c+' &deg; C');
-  }
-  else {
-    $('#location-temp').html(temp_f+' &deg; F');
-  }
-});

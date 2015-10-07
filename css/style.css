@@ -1,3 +1,35 @@
+html {
+  margin:0;
+  padding:0;
+} 
+
+body {
+  background-repeat: no-repeat;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  margin:0;
+  padding:0;
+}
+
+h1, h2, h3, h4 {
+  color: black;
+}
+
+h1 {
+  margin-top: 0;
+  padding-top: 40px;
+}
+
+.black-opacity{
+  background-color: rgba(255,255,255,0.5);
+  height: 1000px;
+  padding-top: 0;
+  margin-top: 0;
+  
+}
+
 #wunderground-logo {
   width: auto;
   max-height: 20px;
@@ -8,25 +40,36 @@
   height: 90px;
 }
 
-#toggle-switch{
+.toggle-text-left{
   display: none;
-  width: auto;
-}
-
-.container {
   text-align: center;
+  vertical-align:middle;
+  padding-bottom: 15px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-.label-class {
-  display: inline-block !important;
+.toggle-text-right{
+  display: none;
+  text-align: center;
+  vertical-align:middle;
+  padding-bottom: 15px;
+  padding-left: 0px;
+  padding-right: 5px;
 }
 
-.span-class {
-  vertical-align: middle;
-  line-height: 100px !important;
+.toggle-switch {
+  display: none;
 }
 
-#credits {
+.container-flex {
+  display: flex;
+  height: 70px;
+  justify-content: center;
+  align-items: center;
+}
+
+.credits {
   padding: 50px 0 0 0;
 }
 
@@ -50,8 +93,10 @@
 
 input.cmn-toggle-round-flat + label {
   padding: 2px;
-  width: 60px;
-  height: 30px;
+  /* size of switch */
+  width: 40px;
+  height: 20px;
+  /*----------------*/
   background-color: #000000;
   border-radius: 60px;
   transition: background 0.4s;
@@ -78,7 +123,7 @@ input.cmn-toggle-round-flat + label:after {
   top: 4px;
   left: 4px;
   bottom: 4px;
-  width: 22px;
+  width: 12px; /* size of switch circle */
   background-color: #000000;
   border-radius: 52px;
   transition: margin 0.4s, background 0.4s;
@@ -89,6 +134,6 @@ input.cmn-toggle-round-flat:checked + label {
 }
 
 input.cmn-toggle-round-flat:checked + label:after {
-  margin-left: 30px;
+  margin-left: 20px; /* how much switch slides to right */
   background-color: #000000;
 }
