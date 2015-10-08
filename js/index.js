@@ -1,3 +1,4 @@
+/*jshint browser: true, jquery: true*/
 jQuery(document).ready(function ($) {
   getLocation();
 });
@@ -24,18 +25,18 @@ function showPosition(position) {
     url: "http://api.wunderground.com/api/079983eb38969753 /geolookup/conditions/q/" + latCoord + "," + longCoord + ".json",
     dataType: "jsonp",
     success: function (parsed_json) {
-      var location = parsed_json['location']['city'];
+      var location = parsed_json.location.city;
       //console.log(location);
-      temp_f = parsed_json['current_observation']['temp_f'];
-      temp_c = parsed_json['current_observation']['temp_c'];
+      temp_f = parsed_json.current_observation.temp_f;
+      temp_c = parsed_json.current_observation.temp_c;
 
-      var weather = parsed_json['current_observation']['weather'];
-      var icon = parsed_json['current_observation']['icon'];
+      var weather = parsed_json.current_observation.weather;
+      var icon = parsed_json.current_observation.icon;
 
       $('#location-name').text(location);
       $('#location-temp').html(temp_f + ' &deg;F');
       $('i').remove();
-      $('#location-icon').prepend("<img id='weather-icon' src='http://icons.wxug.com/i/c/i/" + icon + ".gif' />")
+      $('#location-icon').prepend("<img id='weather-icon' src='http://icons.wxug.com/i/c/i/" + icon + ".gif' />");
       $('#location-weather').text(weather);
       $('.toggle-text-left').css('display', 'flex');
       $('.toggle-text-right').css('display', 'flex');
@@ -77,16 +78,16 @@ function showPosition(position) {
 function showError(error) {
   switch (error.code) {
   case error.PERMISSION_DENIED:
-    locationName.innerHTML = "User denied the request for Geolocation."
+    locationName.innerHTML = "User denied the request for Geolocation.";
     break;
   case error.POSITION_UNAVAILABLE:
-    locationName.innerHTML = "Location information is unavailable."
+    locationName.innerHTML = "Location information is unavailable.";
     break;
   case error.TIMEOUT:
-    locationName.innerHTML = "The request to get user location timed out."
+    locationName.innerHTML = "The request to get user location timed out.";
     break;
   case error.UNKNOWN_ERROR:
-    locationName.innerHTML = "An unknown error occurred."
+    locationName.innerHTML = "An unknown error occurred.";
     break;
   }
 }
